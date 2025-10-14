@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    height: 30px;
+}
+
+h2 {
+    height: 25px;
+}
+
+#morse {
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    justify-self: center;
+    background-color: red;
+}

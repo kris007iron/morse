@@ -41,21 +41,21 @@ async function generate_sound(text)
                 if (letterM[sign] == "-")
                 {
                     startSound()
-                    await sleep(500)
+                    await sleep(DASH_LENGTH)
                     endSound()
-                    await sleep(50)
+                    await sleep(INTRA_CHAR_SPACE)
                 }
                 if (letterM[sign] == ".")
                 {
                     startSound()
-                    await sleep(250)
+                    await sleep(DOT_LENGTH)
                     endSound()
-                    await sleep(50)
+                    await sleep(INTRA_CHAR_SPACE)
                 }
             }
-            await sleep(100)
+            await sleep(INTER_CHAR_SPACE)
         }
-        await sleep(200)
+        await sleep(WORD_SPACE)
     }
 }
 document.getElementById("start").addEventListener("click", async () =>
@@ -136,19 +136,19 @@ function endSound()
     }
 }
 
-document.addEventListener("mousedown", function ()
+document.getElementById("morse").addEventListener("mousedown", function ()
 {
 
     startSound();
 });
 
-document.addEventListener("mouseup", function ()
+document.getElementById("morse").addEventListener("mouseup", function ()
 {
 
     endSound();
 });
 
-document.addEventListener("mouseleave", function ()
+document.getElementById("morse").addEventListener("mouseleave", function ()
 {
     endSound();
 });
