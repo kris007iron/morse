@@ -9,6 +9,7 @@ const ERROR_MARGIN_DASH = 0.20
 const TIME_ELEMENT = document.getElementById("time")
 const SING_ELEMENT = document.getElementById("sign")
 const SIGN_TO_CLICK = document.getElementById("signToClick")
+
 let time_clicked = 0
 let mean_dot
 let mean_dash
@@ -16,6 +17,9 @@ let signs = ""
 let context = new (window.AudioContext || window.webkitAudioContext)();
 let currentOsc = null;
 let currentGain = null;
+
+let morse_bars = []
+
 await fetch('./morse-code.json')
     .then(response => response.json())
     .then(data =>
@@ -60,7 +64,8 @@ async function generate_sound(text)
 }
 document.getElementById("start").addEventListener("click", async () =>
 {
-    // await generate_sound(["kocham", "cie"])
+    // await generate_sound(["Hello", "world"])
+    // await generate_sound(["Hello", "world", "from"])
     const letter_keys = Object.keys(morsecode)
     console.log(letter_keys);
     let random_index = Math.floor(Math.random() * letter_keys.length)
@@ -152,3 +157,27 @@ document.getElementById("morse").addEventListener("mouseleave", function ()
 {
     endSound();
 });
+
+function createBar(length)
+{
+    const bar = document.createElement('div');
+    const background = document.createElement('div');
+    const value = document.createElement('div');
+
+    bar.classList.add('bar');
+    bar.style.width = `${length}px`;
+    background.classList.add('background');
+    value.classList.add('value');
+    value.style.width = `10%`
+
+    background.appendChild(value);
+    bar.appendChild(background);
+    document.body.append(bar)
+    return bar;
+}
+
+createBar(20)
+createBar(100)
+createBar(20)
+createBar(100)
+createBar(100)
