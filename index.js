@@ -37,7 +37,7 @@ async function generate_sound(text)
 
         for (const letter in text[word])
         {
-            let letterM = morsecode[text[word][letter].toString()]
+            const letterM = morsecode[text[word][letter].toString()]
             console.log(letterM);
 
             for (const sign in letterM)
@@ -60,6 +60,33 @@ async function generate_sound(text)
             await sleep(INTER_CHAR_SPACE)
         }
         await sleep(WORD_SPACE)
+    }
+}
+
+function generate_sound_bars(text)
+{
+    //TODO: finish grouping and correct displaying of bars inline
+    for (const word in text)
+    {
+        const wordBox = document.createElement('div')
+        for (const letter in text[word])
+        {
+            const letterBox = document.createElement('div')
+            const letterM = morsecode[text[word][letter].toString()]
+            for (const sign in letterM)
+            {
+                if (letterM[sign] == "-")
+                {
+                    const dash = createBar(60)
+                    morse_bars.append(dash)
+                }
+                if (letterM[sign] == ".")
+                {
+                    const dot = createBar(20)
+                    morse_bars.append(dot)
+                }
+            }
+        }
     }
 }
 document.getElementById("start").addEventListener("click", async () =>
@@ -172,7 +199,6 @@ function createBar(length)
 
     background.appendChild(value);
     bar.appendChild(background);
-    document.body.append(bar)
     return bar;
 }
 
