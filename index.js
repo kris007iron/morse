@@ -69,30 +69,37 @@ function generate_sound_bars(text)
     for (const word in text)
     {
         const wordBox = document.createElement('div')
+        wordBox.classList.add('word-box')
         for (const letter in text[word])
         {
             const letterBox = document.createElement('div')
+            letterBox.classList.add('letter-box')
             const letterM = morsecode[text[word][letter].toString()]
             for (const sign in letterM)
             {
                 if (letterM[sign] == "-")
                 {
                     const dash = createBar(60)
-                    morse_bars.append(dash)
+                    morse_bars.push(dash)
+                    letterBox.append(dash)
                 }
                 if (letterM[sign] == ".")
                 {
                     const dot = createBar(20)
-                    morse_bars.append(dot)
+                    morse_bars.push(dot)
+                    letterBox.append(dot)
                 }
             }
+            wordBox.append(letterBox)
         }
+        document.body.append(wordBox)
     }
 }
 document.getElementById("start").addEventListener("click", async () =>
 {
     // await generate_sound(["Hello", "world"])
     // await generate_sound(["Hello", "world", "from"])
+    generate_sound_bars(["hello", "world"])
     const letter_keys = Object.keys(morsecode)
     console.log(letter_keys);
     let random_index = Math.floor(Math.random() * letter_keys.length)
@@ -201,9 +208,3 @@ function createBar(length)
     bar.appendChild(background);
     return bar;
 }
-
-createBar(20)
-createBar(100)
-createBar(20)
-createBar(100)
-createBar(100)
