@@ -31,6 +31,8 @@ await fetch('./morse-code.json')
 
 async function generate_sound(text)
 {
+    generate_sound_bars(text)
+    let sign_index = 0
     for (const word in text)
     {
         console.log(text[word]);
@@ -61,6 +63,14 @@ async function generate_sound(text)
         }
         await sleep(WORD_SPACE)
     }
+}
+
+function progress_sound_bar(sign, length)
+{
+    const startDate = new Date().getTime()
+    const endDate = startDate + length
+    //TODO: change the bar as the sound progresses
+
 }
 
 function generate_sound_bars(text)
@@ -97,9 +107,9 @@ function generate_sound_bars(text)
 }
 document.getElementById("start").addEventListener("click", async () =>
 {
-    // await generate_sound(["Hello", "world"])
+    await generate_sound(["hello", "world"])
     // await generate_sound(["Hello", "world", "from"])
-    generate_sound_bars(["hello", "world"])
+    // generate_sound_bars(["hello", "world"])
     const letter_keys = Object.keys(morsecode)
     console.log(letter_keys);
     let random_index = Math.floor(Math.random() * letter_keys.length)
