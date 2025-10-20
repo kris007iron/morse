@@ -47,6 +47,7 @@ async function generate_sound(text)
                 if (letterM[sign] == "-")
                 {
                     startSound()
+                    progress_sound_bar(morse_bars[sign_index])
                     await sleep(DASH_LENGTH)
                     endSound()
                     await sleep(INTRA_CHAR_SPACE)
@@ -54,10 +55,12 @@ async function generate_sound(text)
                 if (letterM[sign] == ".")
                 {
                     startSound()
+                    progress_sound_bar(morse_bars[sign_index])
                     await sleep(DOT_LENGTH)
                     endSound()
                     await sleep(INTRA_CHAR_SPACE)
                 }
+                sign_index += 1
             }
             await sleep(INTER_CHAR_SPACE)
         }
@@ -69,7 +72,10 @@ function progress_sound_bar(sign, length)
 {
     const startDate = new Date().getTime()
     const endDate = startDate + length
-    //TODO: change the bar as the sound progresses
+    //TODO: change the bar as the sound progresses yet this is only for generative purposes, when 
+    // user will be clicking this will be performed with different function and other visuals to be distinctive to the generated one
+    sign.getChildrenByClass("value")
+    console.log(sign.getChildrenByClass("value"))
 
 }
 
@@ -90,6 +96,7 @@ function generate_sound_bars(text)
                 if (letterM[sign] == "-")
                 {
                     const dash = createBar(60)
+                    dash.classList.add
                     morse_bars.push(dash)
                     letterBox.append(dash)
                 }
@@ -212,6 +219,13 @@ function createBar(length)
     bar.style.width = `${length}px`;
     background.classList.add('background');
     value.classList.add('value');
+    if (length == 60)
+    {
+        value.classList.add('dash')
+    } else if (length == 20)
+    {
+        value.classList.add('dot')
+    }
     value.style.width = `10%`
 
     background.appendChild(value);
