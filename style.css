@@ -38,11 +38,11 @@ h2 {
 }
 
 .dot {
-    transform: width 0.1s ease;
+    transition: width 0.1s ease;
 }
 
 .dash {
-    transform: width 0.3s ease;
+    transition: width 0.3s ease;
 }
 
 .word-box {

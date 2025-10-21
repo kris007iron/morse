@@ -70,13 +70,9 @@ async function generate_sound(text)
 
 function progress_sound_bar(sign, length)
 {
-    const startDate = new Date().getTime()
-    const endDate = startDate + length
     //TODO: change the bar as the sound progresses yet this is only for generative purposes, when 
-    // user will be clicking this will be performed with different function and other visuals to be distinctive to the generated one
-    sign.getChildrenByClass("value")
-    console.log(sign.getChildrenByClass("value"))
-
+    // user will be clicking this will be performed with different function and other visuals to be distinctive to the generated one    
+    sign.children[0].children[0].style.width = `100%`
 }
 
 function generate_sound_bars(text)
@@ -216,6 +212,7 @@ function createBar(length)
     const value = document.createElement('div');
 
     bar.classList.add('bar');
+
     bar.style.width = `${length}px`;
     background.classList.add('background');
     value.classList.add('value');
@@ -226,7 +223,7 @@ function createBar(length)
     {
         value.classList.add('dot')
     }
-    value.style.width = `10%`
+    value.style.width = `0%`
 
     background.appendChild(value);
     bar.appendChild(background);
