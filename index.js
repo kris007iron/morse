@@ -70,14 +70,16 @@ async function generate_sound(text)
 
 function progress_sound_bar(sign, length)
 {
-    //TODO: change the bar as the sound progresses yet this is only for generative purposes, when 
-    // user will be clicking this will be performed with different function and other visuals to be distinctive to the generated one    
     sign.children[0].children[0].style.width = `100%`
+}
+
+function progress_sound_bar_by_user(sign)
+{
+    //TODO: user part
 }
 
 function generate_sound_bars(text)
 {
-    //TODO: finish grouping and correct displaying of bars inline
     for (const word in text)
     {
         const wordBox = document.createElement('div')
