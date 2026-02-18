@@ -1,11 +1,5 @@
 let morsecode = []
-const DOT_LENGTH = 100
-const DASH_LENGTH = DOT_LENGTH * 3
-const INTRA_CHAR_SPACE = DOT_LENGTH
-const INTER_CHAR_SPACE = DASH_LENGTH
-const WORD_SPACE = DASH_LENGTH * 7
-const ERROR_MARGIN_DOT = 0.50
-const ERROR_MARGIN_DASH = 0.20
+
 const TIME_ELEMENT = document.getElementById("time")
 const SING_ELEMENT = document.getElementById("sign")
 const SIGN_TO_CLICK = document.getElementById("signToClick")
@@ -14,20 +8,9 @@ let time_clicked = 0
 let mean_dot
 let mean_dash
 let signs = ""
-let context = new (window.AudioContext || window.webkitAudioContext)();
-let currentOsc = null;
-let currentGain = null;
+
 
 let morse_bars = []
-
-await fetch('./morse-code.json')
-    .then(response => response.json())
-    .then(data =>
-    {
-        morsecode = data.morsecode
-
-    })
-    .catch(error => console.log(error));
 
 async function generate_sound(text)
 {
