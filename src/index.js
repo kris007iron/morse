@@ -1,5 +1,5 @@
 import { loadMorseData } from "./morseData.js";
-import { renderBars, fillBar } from "./barRenderer.js";
+import { renderBars, fillBar, morseBars } from "./barRenderer.js";
 import { bindInput } from "./inputHandler.js";
 import { handleUserPress } from "./gameLogic.js";
 
@@ -25,4 +25,4 @@ document.getElementById("start").addEventListener("click", () =>
 bindInput(MORSE_BTN, (duration) =>
 {
     handleUserPress(duration, TIME_ELEMENT, SIGN_ELEMENT);
-});
+}, morseBars);

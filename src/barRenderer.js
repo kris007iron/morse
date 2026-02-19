@@ -1,8 +1,11 @@
-let morseBars = [];
+export const morseBars = [];
 
 export function resetBars(container)
 {
-    morseBars = [];
+    while (morseBars.length > 0)
+    {
+        morseBars.pop();
+    }
     container.innerHTML = "";
 }
 
@@ -13,6 +16,10 @@ export function createBar(length)
     const value = document.createElement('div');
 
     bar.classList.add('bar');
+    if (length == 20)
+    {
+        bar.classList.add('dot');
+    }
     bar.style.width = `${length}px`;
     background.classList.add('background');
     value.classList.add('value');
@@ -55,4 +62,16 @@ export function fillBar(index)
 {
     if (!morseBars[index]) return;
     morseBars[index].children[0].children[0].style.width = "100%";
+}
+
+export function fillBarParam(index, ms)
+{
+    if (!morseBars[index]) return;
+    if (morseBars[index].classList.contains("dot"))
+    {
+        morseBars[index].children[0].children[0].style.width = `${ms}%`;
+    } else
+    {
+        morseBars[index].children[0].children[0].style.width = `${ms / 3}%`;
+    }
 }
