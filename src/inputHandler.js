@@ -5,6 +5,11 @@ let pressStart = 0;
 let currentSign = 0;
 let interval;
 
+export function setCurrentSign(value)
+{
+    currentSign = value;
+}
+
 export function bindInput(button, onRelease,
     morseBars)
 {

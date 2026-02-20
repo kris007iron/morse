@@ -1,5 +1,6 @@
 import { loadMorseData } from "./morseData.js";
 import { renderBars, fillBar, morseBars } from "./barRenderer.js";
+import { setCurrentSign } from './inputHandler.js';
 import { bindInput } from "./inputHandler.js";
 import { handleUserPress } from "./gameLogic.js";
 
@@ -15,6 +16,7 @@ morsecode = await loadMorseData();
 
 document.getElementById("start").addEventListener("click", () =>
 {
+    setCurrentSign(0);
     const words = ["hello", "world"];
     renderBars(words, morsecode, BAR_CONTAINER);
 
