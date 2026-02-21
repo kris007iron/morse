@@ -34,6 +34,10 @@ export function bindInput(button, onRelease,
 
     button.addEventListener("mouseleave", () =>
     {
+        const duration = Date.now() - pressStart;
         stopTone();
+        clearInterval(interval);
+        currentSign++;
+        onRelease(duration);
     });
 }
