@@ -1,4 +1,5 @@
 import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH } from "./config.js";
+import { isDot, isDash } from "./timingEngine.js";
 
 export const morseBars = [];
 
@@ -72,7 +73,7 @@ export function fillBarParam(index, ms)
     if (morseBars[index].classList.contains("dot"))
     {
         morseBars[index].children[0].children[0].style.width = `${ms}%`;
-        if (Math.abs(ms - DOT_LENGTH) >= DOT_LENGTH * ERROR_MARGIN_DOT)
+        if (!isDot())
         {
             morseBars[index].children[0].children[0].style.backgroundColor = "#A00";
         } else
@@ -82,7 +83,7 @@ export function fillBarParam(index, ms)
     } else
     {
         morseBars[index].children[0].children[0].style.width = `${ms / 3}%`;
-        if (Math.abs(ms - DASH_LENGTH) >= DASH_LENGTH * ERROR_MARGIN_DASH)
+        if (!isDash())
         {
             morseBars[index].children[0].children[0].style.backgroundColor = "#A00";
         }
