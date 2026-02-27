@@ -1,5 +1,44 @@
 * {
     box-sizing: border-box;
+    font-family: 'Helvetica';
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: lightblue;
+    justify-items: center;
+    min-height: 100vh;
+}
+
+.title {
+    padding: 30px;
+}
+
+.signs {
+
+    min-height: 30vh;
+    width: 80%;
+    background-color: antiquewhite;
+}
+
+.options {
+    padding: 30px;
+}
+
+.options-list {
+    list-style: none;
+}
+
+.options-list-element {
+    padding: 0 10px;
+    display: inline-block;
+}
+
+.workspace {
+    min-height: 30vh;
+    width: 80%;
+    background-color: antiquewhite;
 }
 
 h1 {

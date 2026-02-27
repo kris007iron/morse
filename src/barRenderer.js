@@ -73,7 +73,7 @@ export function fillBarParam(index, ms)
     if (morseBars[index].classList.contains("dot"))
     {
         morseBars[index].children[0].children[0].style.width = `${ms}%`;
-        if (!isDot())
+        if (!isDot(ms))
         {
             morseBars[index].children[0].children[0].style.backgroundColor = "#A00";
         } else
@@ -83,7 +83,7 @@ export function fillBarParam(index, ms)
     } else
     {
         morseBars[index].children[0].children[0].style.width = `${ms / 3}%`;
-        if (!isDash())
+        if (!isDash(ms))
         {
             morseBars[index].children[0].children[0].style.backgroundColor = "#A00";
         }

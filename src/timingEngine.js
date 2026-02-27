@@ -10,7 +10,7 @@ export function classifyPress(duration)
     {
         return "-";
     }
-    return null;
+    return " ";
 }
 
 export function isDot(ms)
