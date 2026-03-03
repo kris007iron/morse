@@ -7,7 +7,8 @@ import { handleUserPress } from "./gameLogic.js";
 const TIME_ELEMENT = document.getElementById("time");
 const SIGN_ELEMENT = document.getElementById("sign");
 const SIGN_TO_CLICK = document.getElementById("signToClick");
-const BAR_CONTAINER = document.getElementById("signBars");
+const BAR_CONTAINER = document.getElementById("workspace");
+const TEXT_CONTAINER = document.getElementById("text");
 const MORSE_BTN = document.getElementById("morse");
 
 let morsecode = {};
@@ -18,6 +19,7 @@ document.getElementById("start").addEventListener("click", () =>
 {
     setCurrentSign(0);
     const words = ["hello", "world"];
+    TEXT_CONTAINER.textContent = words.map((e) => { return e.toUpperCase() }).join(" ")
     renderBars(words, morsecode, BAR_CONTAINER);
 
     const keys = Object.keys(morsecode);

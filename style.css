@@ -15,30 +15,41 @@ main {
     padding: 30px;
 }
 
-.signs {
-
-    min-height: 30vh;
+.options {
+    margin: 10px 0;
+    padding: 20px;
     width: 80%;
     background-color: antiquewhite;
-}
-
-.options {
-    padding: 30px;
+    border-radius: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .options-list {
     list-style: none;
+    text-align: center;
+    height: 20px;
 }
 
 .options-list-element {
-    padding: 0 10px;
     display: inline-block;
+    width: 70px;
+    height: 20px;
 }
 
-.workspace {
+.options-list-element:hover {
+    font-weight: bolder;
+}
+
+.workspace,
+.signs {
+    padding: 10px;
     min-height: 30vh;
     width: 80%;
     background-color: antiquewhite;
+    border-radius: 20px;
 }
 
 h1 {
