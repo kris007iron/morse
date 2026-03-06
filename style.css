@@ -50,6 +50,9 @@ main {
     width: 80%;
     background-color: antiquewhite;
     border-radius: 20px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
 }
 
 h1 {
