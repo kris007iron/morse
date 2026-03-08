@@ -9,7 +9,7 @@ const SIGN_ELEMENT = document.getElementById("sign");
 const SIGN_TO_CLICK = document.getElementById("signToClick");
 const BAR_CONTAINER = document.getElementById("workspace");
 const TEXT_CONTAINER = document.getElementById("text");
-const MORSE_BTN = document.getElementById("morse");
+const MORSE_BTN = document.getElementById("workspace");
 
 let morsecode = {};
 
