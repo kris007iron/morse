@@ -90,6 +90,27 @@ h2 {
     background-color: cornflowerblue;
 }
 
+.pause {
+    height: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.pause-background {
+    background-color: cornflowerblue;
+    height: 5px;
+    margin: auto 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pause-value {
+    height: 10px;
+    background-color: whitesmoke;
+}
+
+
+
 .dot {
     /* transition: width 0.1s ease; */
 }

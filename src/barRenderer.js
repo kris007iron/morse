@@ -34,26 +34,53 @@ export function createBar(length)
     return bar;
 }
 
+export function createPause(length)
+{
+    const pause = document.createElement('div');
+    const background = document.createElement('div');
+    const value = document.createElement('div');
+
+    pause.classList.add('pause');
+    pause.style.width = `${length}px`;
+    background.classList.add('pause-background');
+    value.classList.add('pause-value');
+
+    value.style.width = "0%";
+
+    background.appendChild(value);
+    pause.appendChild(background);
+    return pause;
+}
+
 export function renderBars(words, morsecode, container)
 {
     resetBars(container);
 
-    for (const word of words)
+    for (let i = 0; i < words.length; i++)
     {
+        const word = words[i];
         const wordBox = document.createElement("div");
         wordBox.classList.add("word-box");
 
-        for (const letter of word)
+        for (let j = 0; j < word.length; j++)
         {
+            const letter = word[j]
             const letterBox = document.createElement("div");
             letterBox.classList.add("letter-box");
             const letterM = morsecode[letter];
 
-            for (const sign of letterM)
+            for (let k = 0; k < letterM.length; k++)
             {
+                const sign = letterM[k]
                 const bar = createBar(sign === "-" ? 60 : 20);
                 morseBars.push(bar);
                 letterBox.append(bar);
+                if (k < letterM.length - 1)
+                {
+                    const pause = createPause(20);
+                    console.log(pause)
+                    letterBox.append(pause);
+                }
             }
             wordBox.append(letterBox);
         }
