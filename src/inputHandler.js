@@ -3,7 +3,8 @@ import { fillBarParam } from "./barRenderer.js";
 
 let pressStart = 0;
 let currentSign = 0;
-let interval;
+let currentPause = 0;
+let interval = null;
 
 export function setCurrentSign(value)
 {
@@ -28,17 +29,21 @@ export function bindInput(button, onRelease,
         const duration = Date.now() - pressStart;
         stopTone();
         clearInterval(interval);
+        interval = null;
         currentSign++;
         onRelease(duration);
     });
 
     button.addEventListener("mouseleave", () =>
     {
-        const duration = Date.now() - pressStart;
-        stopTone();
-        clearInterval(interval);
-        currentSign++;
-        onRelease(duration);
-        //TODO: check whether it was pressed first so it doesn't falesly skip to the next one just because you left the box without clicking
+        if (interval)
+        {
+            const duration = Date.now() - pressStart;
+            stopTone();
+            clearInterval(interval);
+            interval = null;
+            currentSign++;
+            onRelease(duration);
+        }        
     });
 }
