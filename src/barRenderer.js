@@ -90,9 +90,9 @@ export function renderBars(words, morsecode, container)
                 } else if (j == word.length - 1)
                 {
                     const wordPause = createPause(60 * 7);
-                    pauseBars.push(interCharPause);
-                    console.log(interCharPause)
-                    letterBox.append(interCharPause);
+                    pauseBars.push(wordPause);
+                    console.log(wordPause)
+                    letterBox.append(wordPause);
                 }
 
             }
