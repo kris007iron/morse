@@ -39,5 +39,6 @@ export function bindInput(button, onRelease,
         clearInterval(interval);
         currentSign++;
         onRelease(duration);
+        //TODO: check whether it was pressed first so it doesn't falesly skip to the next one just because you left the box without clicking
     });
 }

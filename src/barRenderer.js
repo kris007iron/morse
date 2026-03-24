@@ -2,6 +2,7 @@ import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH } from "./
 import { isDot, isDash } from "./timingEngine.js";
 
 export const morseBars = [];
+export const pauseBars = [];
 
 export function resetBars(container)
 {
@@ -78,9 +79,22 @@ export function renderBars(words, morsecode, container)
                 if (k < letterM.length - 1)
                 {
                     const pause = createPause(20);
-                    console.log(pause)
                     letterBox.append(pause);
+                    pauseBars.push(pause);
+                } else if (k == letterM.length - 1 && j < word.length - 1)
+                {
+                    const interCharPause = createPause(60);
+                    pauseBars.push(interCharPause);
+                    console.log(interCharPause)
+                    letterBox.append(interCharPause);
+                } else if (j == word.length - 1)
+                {
+                    const wordPause = createPause(60 * 7);
+                    pauseBars.push(interCharPause);
+                    console.log(interCharPause)
+                    letterBox.append(interCharPause);
                 }
+
             }
             wordBox.append(letterBox);
         }
@@ -117,6 +131,33 @@ export function fillBarParam(index, ms)
         else
         {
             morseBars[index].children[0].children[0].style.backgroundColor = "cornflowerblue";
+        }
+    }
+}
+
+export function fillPauseParam(index, ms)
+{
+    if (!pauseBars[index]) return;
+    if (pauseBars[index].classList.contains("dot"))
+    {
+        pauseBars[index].children[0].children[0].style.width = `${ms}%`;
+        if (!isDot(ms))
+        {
+            pauseBars[index].children[0].children[0].style.backgroundColor = "#A00";
+        } else
+        {
+            pauseBars[index].children[0].children[0].style.backgroundColor = "cornflowerblue";
+        }
+    } else
+    {
+        pauseBars[index].children[0].children[0].style.width = `${ms / 3}%`;
+        if (!isDash(ms))
+        {
+            pauseBars[index].children[0].children[0].style.backgroundColor = "#A00";
+        }
+        else
+        {
+            pauseBars[index].children[0].children[0].style.backgroundColor = "cornflowerblue";
         }
     }
 }
