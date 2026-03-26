@@ -121,6 +121,12 @@ h2 {
     /* transition: width 0.3s ease; */
 }
 
+.intra-space {}
+
+.inter-space {}
+
+.word-space {}
+
 .word-box {
     padding-right: 30px;
 }
