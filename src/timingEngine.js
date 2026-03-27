@@ -1,4 +1,4 @@
-import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH } from "./config.js";
+import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH, WORD_SPACE } from "./config.js";
 
 export function classifyPress(duration)
 {
@@ -25,6 +25,15 @@ export function isDot(ms)
 export function isDash(ms)
 {
     if (Math.abs(ms - DASH_LENGTH) >= DASH_LENGTH * ERROR_MARGIN_DASH)
+    {
+        return false;
+    }
+    return true;
+}
+
+export function isWordSpace(ms)
+{
+    if (Math.abs(ms - WORD_SPACE) >= WORD_SPACE * ERROR_MARGIN_DASH)
     {
         return false;
     }

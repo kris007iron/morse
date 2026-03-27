@@ -1,5 +1,5 @@
 import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH } from "./config.js";
-import { isDot, isDash } from "./timingEngine.js";
+import { isDot, isDash, isWordSpace } from "./timingEngine.js";
 
 export const morseBars = [];
 export const pauseBars = [];
@@ -41,6 +41,18 @@ export function createPause(length)
     const background = document.createElement('div');
     const value = document.createElement('div');
 
+    switch (length)
+    {
+        case 20:
+            pause.classList.add("intra-space");
+            break;
+        case 60:
+            pause.classList.add("inter-space");
+            break;
+        case 60 * 7:
+            pause.classList.add("word-space");
+            break;
+    }
     pause.classList.add('pause');
     pause.style.width = `${length}px`;
     background.classList.add('pause-background');
@@ -138,7 +150,7 @@ export function fillBarParam(index, ms)
 export function fillPauseParam(index, ms)
 {
     if (!pauseBars[index]) return;
-    if (pauseBars[index].classList.contains("dot"))
+    if (pauseBars[index].classList.contains("intra-space"))
     {
         pauseBars[index].children[0].children[0].style.width = `${ms}%`;
         if (!isDot(ms))
@@ -148,10 +160,21 @@ export function fillPauseParam(index, ms)
         {
             pauseBars[index].children[0].children[0].style.backgroundColor = "cornflowerblue";
         }
-    } else
+    } else if (pauseBars[index].classList.contains("inter-space"))
     {
         pauseBars[index].children[0].children[0].style.width = `${ms / 3}%`;
         if (!isDash(ms))
+        {
+            pauseBars[index].children[0].children[0].style.backgroundColor = "#A00";
+        }
+        else
+        {
+            pauseBars[index].children[0].children[0].style.backgroundColor = "cornflowerblue";
+        }
+    } else
+    {
+        pauseBars[index].children[0].children[0].style.width = `${ms / 3 / 7}%`;
+        if (!isWordSpace(ms))
         {
             pauseBars[index].children[0].children[0].style.backgroundColor = "#A00";
         }
