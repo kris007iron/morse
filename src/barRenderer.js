@@ -1,4 +1,4 @@
-import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH } from "./config.js";
+import { DOT_LENGTH, DASH_LENGTH, ERROR_MARGIN_DOT, ERROR_MARGIN_DASH, PIXEL_DOT_LENGTH, PIXEL_DASH_LENGTH, PIXEL_WORD_SPACE } from "./config.js";
 import { isDot, isDash, isWordSpace } from "./timingEngine.js";
 
 export const morseBars = [];
@@ -20,7 +20,7 @@ export function createBar(length)
     const value = document.createElement('div');
 
     bar.classList.add('bar');
-    if (length == 20)
+    if (length == PIXEL_DOT_LENGTH)
     {
         bar.classList.add('dot');
     }
@@ -43,13 +43,13 @@ export function createPause(length)
 
     switch (length)
     {
-        case 20:
+        case PIXEL_DOT_LENGTH:
             pause.classList.add("intra-space");
             break;
-        case 60:
+        case PIXEL_DASH_LENGTH:
             pause.classList.add("inter-space");
             break;
-        case 60 * 7:
+        case PIXEL_WORD_SPACE:
             pause.classList.add("word-space");
             break;
     }
@@ -85,23 +85,23 @@ export function renderBars(words, morsecode, container)
             for (let k = 0; k < letterM.length; k++)
             {
                 const sign = letterM[k]
-                const bar = createBar(sign === "-" ? 60 : 20);
+                const bar = createBar(sign === "-" ? PIXEL_DASH_LENGTH : PIXEL_DOT_LENGTH);
                 morseBars.push(bar);
                 letterBox.append(bar);
                 if (k < letterM.length - 1)
                 {
-                    const pause = createPause(20);
+                    const pause = createPause(PIXEL_DOT_LENGTH);
                     letterBox.append(pause);
                     pauseBars.push(pause);
                 } else if (k == letterM.length - 1 && j < word.length - 1)
                 {
-                    const interCharPause = createPause(60);
+                    const interCharPause = createPause(PIXEL_DASH_LENGTH);
                     pauseBars.push(interCharPause);
                     console.log(interCharPause)
                     letterBox.append(interCharPause);
                 } else if (j == word.length - 1)
                 {
-                    const wordPause = createPause(60 * 7);
+                    const wordPause = createPause(PIXEL_WORD_SPACE);
                     pauseBars.push(wordPause);
                     console.log(wordPause)
                     letterBox.append(wordPause);
