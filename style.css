@@ -1,5 +1,58 @@
 * {
     box-sizing: border-box;
+    font-family: 'Helvetica';
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: lightblue;
+    justify-items: center;
+    min-height: 100vh;
+}
+
+.title {
+    padding: 30px;
+}
+
+.options {
+    margin: 10px 0;
+    padding: 20px;
+    width: 80%;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.options-list {
+    list-style: none;
+    text-align: center;
+    height: 20px;
+}
+
+.options-list-element {
+    display: inline-block;
+    width: 70px;
+    height: 20px;
+}
+
+.options-list-element:hover {
+    font-weight: bolder;
+}
+
+.workspace,
+.signs {
+    padding: 10px;
+    min-height: 30vh;
+    width: 80%;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
 }
 
 h1 {
@@ -37,6 +90,29 @@ h2 {
     background-color: cornflowerblue;
 }
 
+.pause {
+    height: 20px;
+    padding: 0px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.pause-background {
+    background-color: cornflowerblue;
+    height: 5px;
+    margin: auto 0;
+    margin-bottom: 7.5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pause-value {
+    height: 10px;
+    background-color: whitesmoke;
+}
+
+
+
 .dot {
     /* transition: width 0.1s ease; */
 }
@@ -44,6 +120,12 @@ h2 {
 .dash {
     /* transition: width 0.3s ease; */
 }
+
+.intra-space {}
+
+.inter-space {}
+
+.word-space {}
 
 .word-box {
     padding-right: 30px;
