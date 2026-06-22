@@ -43,10 +43,20 @@ main {
     font-weight: bolder;
 }
 
-.workspace,
+.workspace {
+    padding: 10px;
+    min-height: 40vh;
+    width: 80%;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
 .signs {
     padding: 10px;
-    min-height: 30vh;
+    min-height: 20vh;
     width: 80%;
     background-color: antiquewhite;
     border-radius: 20px;
